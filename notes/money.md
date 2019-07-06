@@ -24,3 +24,5 @@ How can we quickly get to green?
 3. Triangulation - The most conservative strategy, where we only start to generalise our code when there are two examples of more. Helps to eke towards the right path if you're getting lost on your design.
 
 Chapter 3 - our Dollar object is conforming to the Value Object pattern. We'd need to test for `equals()` in Java, but we've already got `==` and `===` in TypeScript (as well as `toBe` to `toEqual` in Jest)
+
+Chapter 4 - Conceptually, our `Dollar.times()` should return a `Dollar` with a value of the original object times the multiplier. But our tests aren't really looking for that - they're testing a class property against a number.

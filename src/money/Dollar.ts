@@ -1,5 +1,5 @@
 export default class Dollar {
-  public amount: number
+  private amount: number
 
   public constructor(amount: number) {
     this.amount = amount
