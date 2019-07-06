@@ -14,5 +14,11 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 - $5 + 10 CHF = $10 if rate is 2:1
 - ~~$5 * 2 = $10~~
 - Make amount private
-- Dollar side-effects
+- ~~Dollar side-effects~~
 - Money rounding?
+
+How can we quickly get to green?
+
+1. Fake it - Return a constant and gradually replace constants with variables until you have the real code
+2. Use Obvious Implementation - Type in the real implementation
+3. Triangulation
