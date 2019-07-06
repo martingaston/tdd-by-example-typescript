@@ -21,4 +21,6 @@ How can we quickly get to green?
 
 1. Fake it - Return a constant and gradually replace constants with variables until you have the real code
 2. Use Obvious Implementation - Type in the real implementation
-3. Triangulation
+3. Triangulation - The most conservative strategy, where we only start to generalise our code when there are two examples of more. Helps to eke towards the right path if you're getting lost on your design.
+
+Chapter 3 - our Dollar object is conforming to the Value Object pattern. We'd need to test for `equals()` in Java, but we've already got `==` and `===` in TypeScript (as well as `toBe` to `toEqual` in Jest)
