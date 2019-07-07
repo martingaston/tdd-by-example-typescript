@@ -12,4 +12,9 @@ describe('The Multiplication class', (): void => {
     expect(five.times(2)).toEqual(Money.franc(10))
     expect(five.times(3)).toEqual(Money.franc(15))
   })
+
+  test('it has a currency', (): void => {
+    expect(Money.dollar(1).currency).toEqual('USD')
+    expect(Money.franc(1).currency).toEqual('CHF')
+  })
 })

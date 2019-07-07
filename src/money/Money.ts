@@ -3,6 +3,6 @@ import Dollar from '../../src/money/Dollar'
 import Currency from '../../src/money/Currency'
 
 export default class Money {
-  public static dollar = (amount: number): Currency => new Dollar(amount)
-  public static franc = (amount: number): Currency => new Franc(amount)
+  public static dollar = (amount: number): Currency => new Dollar(amount, 'USD')
+  public static franc = (amount: number): Currency => new Franc(amount, 'CHF')
 }

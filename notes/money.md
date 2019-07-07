@@ -27,9 +27,9 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 - ~~5 CHF * 2 = 10CHF~~
 - Dollar/Franc duplication
 - ~~Common equals~~
-- Common times
+- **Common times**
 - ~~Compare Francs with Dollars~~
-- Currency implementation?
+- ~~Currency implementation?~~
 - ~~Remove references to `new` subclasses~~
 - Delete tests for Franc multiplication?
 
