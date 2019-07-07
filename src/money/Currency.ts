@@ -1,4 +1,4 @@
-export default abstract class Currency {
+export default class Currency {
   protected amount: number
   protected _currency: string
 
@@ -11,5 +11,7 @@ export default abstract class Currency {
     return this._currency
   }
 
-  abstract times(multiplier: number): Currency
+  public times(multiplier: number): Currency {
+    return new Currency(this.amount * multiplier, this.currency)
+  }
 }
