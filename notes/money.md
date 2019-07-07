@@ -25,13 +25,13 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 - ~~Dollar side-effects~~
 - Money rounding?
 - ~~5 CHF * 2 = 10CHF~~
-- Dollar/Franc duplication
+- ~~Dollar/Franc duplication~~
 - ~~Common equals~~
-- **Common times**
+- ~~Common times~~
 - ~~Compare Francs with Dollars~~
 - ~~Currency implementation?~~
 - ~~Remove references to `new` subclasses~~
-- Delete tests for Franc multiplication?
+- ~~Delete tests for Franc multiplication?~~
 
 How can we quickly get to green?
 
@@ -56,3 +56,7 @@ TypeScript can handle static methods on classes, but extending Money and returni
 Implementing the factory method pattern allows us to decouple test code from the existence of concrete subclasses.
 
 There's nothing that our tests for Franc multiplication are doing that isn't already covered by Dollar. Would we lose confidence in our code if we removed it? Almost certainly - but it is something worth looking into.  
+
+Chapter 9-11 - Now we end up gutting out the `Franc` and `Dollar` classes as we can rely on the factory methods. We slowly lift up the responsibilities of the business logic, the constructors and times methods, until we're able to replace a `Dollar`/`Franc` with just a `Currency`.
+
+This also means we lose the circular dependency and can consolidate all our code into a single `Money` class. So tidy! We also eliminate old tests that we don't need anymore.
