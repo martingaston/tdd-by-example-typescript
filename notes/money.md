@@ -1,5 +1,13 @@
 # Money
 
+## The TDD Cycle
+
+1. Write a test
+2. Make it compile
+3. Run it to see that it fails
+4. Do the barest minimum you can to make it run
+5. Remove duplication
+
 ## The Brief, In Brief
 
 - We need to be able to add amounts in two different currencies and convert the result given a set exchange rate
@@ -16,6 +24,10 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 - Make amount private
 - ~~Dollar side-effects~~
 - Money rounding?
+- ~~5 CHF * 2 = 10CHF~~ 
+- Dollar/Franc duplication
+- Common equals
+- Common times
 
 How can we quickly get to green?
 
@@ -25,4 +37,6 @@ How can we quickly get to green?
 
 Chapter 3 - our Dollar object is conforming to the Value Object pattern. We'd need to test for `equals()` in Java, but we've already got `==` and `===` in TypeScript (as well as `toBe` to `toEqual` in Jest)
 
-Chapter 4 - Conceptually, our `Dollar.times()` should return a `Dollar` with a value of the original object times the multiplier. But our tests aren't really looking for that - they're testing a class property against a number.
+Chapter 4 - Conceptually, our `Dollar.times()` should return a `Dollar` with a value of the original object times the multiplier. But our tests aren't really looking for that - they're testing a class property against a number. Our tests are coupled to our `Dollar` code - by testing against objects we decouple our tests.
+
+But what is equality is not working? In the TypeScript realm, we're relying on Jest. If we get our equality wrong, our multiplication tests would now fail. But this is a risk we manage.
