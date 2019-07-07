@@ -1,8 +1,7 @@
-export default class Franc {
-  private amount: number
-
+import Money from './Money'
+export default class Franc extends Money {
   public constructor(amount: number) {
-    this.amount = amount
+    super(amount, 'CHF')
   }
 
   public times(multiplier: number): Franc {

@@ -21,13 +21,15 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 
 - $5 + 10 CHF = $10 if rate is 2:1
 - ~~$5 * 2 = $10~~
-- Make amount private
+- ~~Make amount private~~
 - ~~Dollar side-effects~~
 - Money rounding?
-- ~~5 CHF * 2 = 10CHF~~ 
+- ~~5 CHF * 2 = 10CHF~~
 - Dollar/Franc duplication
-- Common equals
+- ~~Common equals~~
 - Common times
+- ~~Compare Francs with Dollars~~
+- Currency implementation?
 
 How can we quickly get to green?
 
@@ -40,3 +42,7 @@ Chapter 3 - our Dollar object is conforming to the Value Object pattern. We'd ne
 Chapter 4 - Conceptually, our `Dollar.times()` should return a `Dollar` with a value of the original object times the multiplier. But our tests aren't really looking for that - they're testing a class property against a number. Our tests are coupled to our `Dollar` code - by testing against objects we decouple our tests.
 
 But what is equality is not working? In the TypeScript realm, we're relying on Jest. If we get our equality wrong, our multiplication tests would now fail. But this is a risk we manage.
+
+Chapter 6/7 - The equality code is comparing the contents of a Dollar and a Franc and, as there's only one field, concluding that Dollar(10) is the same as Franc(10). What's the quickest way we can get this to pass in TypeScript? Adding a currency property to the class seems like it to me. We can then remove the duplication by setting it as a property in Money and calling it via the constructor.
+
+Don't add additional design until you have a proper motivation
