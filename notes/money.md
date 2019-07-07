@@ -30,6 +30,8 @@ What's the easiest starting point? Currency conversion, exchange rates - or mult
 - Common times
 - ~~Compare Francs with Dollars~~
 - Currency implementation?
+- ~~Remove references to `new` subclasses~~
+- Delete tests for Franc multiplication?
 
 How can we quickly get to green?
 
@@ -46,3 +48,11 @@ But what is equality is not working? In the TypeScript realm, we're relying on J
 Chapter 6/7 - The equality code is comparing the contents of a Dollar and a Franc and, as there's only one field, concluding that Dollar(10) is the same as Franc(10). What's the quickest way we can get this to pass in TypeScript? Adding a currency property to the class seems like it to me. We can then remove the duplication by setting it as a property in Money and calling it via the constructor.
 
 Don't add additional design until you have a proper motivation
+
+Chapter 8 - Our subclasses aren't really doing a lot of work, so we'd like to reduce them. But how? One way to reduce subclasses is ensure there are fewer references to them in our code. One way of doing this is with the Factory Method pattern.
+
+TypeScript can handle static methods on classes, but extending Money and returning Dollars in a static method makes a circular dependency that throws with a particularly cryptic `TypeError: Class extends value undefined is not a function or null`. What's the *most straightforward* change? I would say we can separate out our `Money` factory from our `Currency` superclass.
+
+Implementing the factory method pattern allows us to decouple test code from the existence of concrete subclasses.
+
+There's nothing that our tests for Franc multiplication are doing that isn't already covered by Dollar. Would we lose confidence in our code if we removed it? Almost certainly - but it is something worth looking into.  

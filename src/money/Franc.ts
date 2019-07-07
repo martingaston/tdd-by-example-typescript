@@ -1,5 +1,5 @@
-import Money from './Money'
-export default class Franc extends Money {
+import Currency from './Currency'
+export default class Franc extends Currency {
   public constructor(amount: number) {
     super(amount, 'CHF')
   }

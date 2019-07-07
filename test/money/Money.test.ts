@@ -1,8 +1,15 @@
-import Dollar from '../../src/money/Dollar'
-import Franc from '../../src/money/Franc'
+import Money from '../../src/money/Money'
 
-describe('The Money superclass', (): void => {
-  it("should make sure subclasses aren't equal", (): void => {
-    expect(new Dollar(10)).not.toEqual(new Franc(10))
+describe('The Multiplication class', (): void => {
+  test('it can times dollars', (): void => {
+    const five = Money.dollar(5)
+    expect(five.times(2)).toEqual(Money.dollar(10))
+    expect(five.times(3)).toEqual(Money.dollar(15))
+  })
+
+  test('it can times francs', (): void => {
+    const five = Money.franc(5)
+    expect(five.times(2)).toEqual(Money.franc(10))
+    expect(five.times(3)).toEqual(Money.franc(15))
   })
 })
