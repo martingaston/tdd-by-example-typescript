@@ -1,4 +1,6 @@
-export default class Money {
+import Expression from './Expression'
+
+export default class Money implements Expression {
   protected amount: number
   protected _currency: string
 
@@ -13,6 +15,10 @@ export default class Money {
 
   public times(multiplier: number): Money {
     return new Money(this.amount * multiplier, this.currency)
+  }
+
+  public plus(addend: Money): Expression {
+    return new Money(this.amount + addend.amount, this.currency)
   }
 
   public static dollar = (amount: number): Money => new Money(amount, 'USD')
