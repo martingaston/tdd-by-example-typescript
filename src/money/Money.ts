@@ -1,7 +1,8 @@
 import Expression from './Expression'
+import Sum from './Sum'
 
 export default class Money implements Expression {
-  protected amount: number
+  public readonly amount: number
   protected _currency: string
 
   public constructor(amount: number, currency: string) {
@@ -18,7 +19,11 @@ export default class Money implements Expression {
   }
 
   public plus(addend: Money): Expression {
-    return new Money(this.amount + addend.amount, this.currency)
+    return new Sum(this, addend)
+  }
+
+  public reduce(): Money {
+    return this
   }
 
   public static dollar = (amount: number): Money => new Money(amount, 'USD')

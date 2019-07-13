@@ -1,5 +1,6 @@
 import Money from '../../src/money/Money'
 import Bank from '../../src/money/Bank'
+import Sum from '../../src/money/Sum'
 
 describe('The Money class', (): void => {
   test('it can multiply a currency', (): void => {
@@ -25,5 +26,26 @@ describe('The Money class', (): void => {
     const bank = new Bank()
     const reduced = bank.reduce(sum, 'USD')
     expect(reduced).toEqual(Money.dollar(10))
+  })
+
+  it('will return a sum from an addition', (): void => {
+    const five = Money.dollar(5)
+    const result = five.plus(five)
+    const sum = result as Sum
+    expect(sum.augend).toEqual(five)
+    expect(sum.addend).toEqual(five)
+  })
+
+  it('will reduce a sum', (): void => {
+    const sum = new Sum(Money.dollar(3), Money.dollar(4))
+    const bank = new Bank()
+    const result = bank.reduce(sum, 'USD')
+    expect(result).toEqual(Money.dollar(7))
+  })
+
+  it('will reduce a money', (): void => {
+    const bank = new Bank()
+    const result = bank.reduce(Money.dollar(5), 'USD')
+    expect(result).toEqual(Money.dollar(5))
   })
 })
