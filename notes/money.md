@@ -60,3 +60,7 @@ There's nothing that our tests for Franc multiplication are doing that isn't alr
 Chapter 9-11 - Now we end up gutting out the `Franc` and `Dollar` classes as we can rely on the factory methods. We slowly lift up the responsibilities of the business logic, the constructors and times methods, until we're able to replace a `Dollar`/`Franc` with just a `Currency`.
 
 This also means we lose the circular dependency and can consolidate all our code into a single `Money` class. So tidy! We also eliminate old tests that we don't need anymore.
+
+Chapter 14 - A big difference between the Java implementation in the book and TypeScript is that TS/JS can't index an object on anything other than a `string` or `number`, whereas a Java `Hashmap` looks like it can take any object with a `hashcode` method as a key. TS has indexable types so I created a private helper function on `Bank` that took two the two currencies and turned them into a string for indexing.
+
+I also originally had a tuple to pair the currencies, but switched to an object (with interface `CurrencyPair`) for clearer code.
