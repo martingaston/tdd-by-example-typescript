@@ -48,4 +48,11 @@ describe('The Money class', (): void => {
     const result = bank.reduce(Money.dollar(5), 'USD')
     expect(result).toEqual(Money.dollar(5))
   })
+
+  it('will reduce two francs into one dollar', (): void => {
+    const bank = new Bank()
+    bank.addRate(['CHF', 'USD'], 2)
+    const result = bank.reduce(Money.franc(2), 'USD')
+    expect(result).toEqual(Money.dollar(1))
+  })
 })
