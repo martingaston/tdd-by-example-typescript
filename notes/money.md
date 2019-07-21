@@ -64,3 +64,10 @@ This also means we lose the circular dependency and can consolidate all our code
 Chapter 14 - A big difference between the Java implementation in the book and TypeScript is that TS/JS can't index an object on anything other than a `string` or `number`, whereas a Java `Hashmap` looks like it can take any object with a `hashcode` method as a key. TS has indexable types so I created a private helper function on `Bank` that took two the two currencies and turned them into a string for indexing.
 
 I also originally had a tuple to pair the currencies, but switched to an object (with interface `CurrencyPair`) for clearer code.
+
+Chapter 17 - Retrospection
+
+- It's interesting how the slight increase in complexity between the opening ten chapters and the next six made it much harder for me to follow the book. It quickly highlights the additional cognitive load that comes from adding even the most straightforward amount of complexity.
+- The example starts with the 'simplest' implementation, which is heavily mutation-based. This is perhaps the case with Java, but it makes me think that different languages (and different times - functional feels a lot more popular now than when the book was originally written) moves the goalposts when it comes to what is regarded as straightforward.
+- Writing the example in a different language to Java really helps you think about what each concept is doing the first time you're introduced to it, and to think of different possible implementations when the target language differs significantly from the source (for example, `equals()`).
+- I need to work out why Jest's `watch` mode can't recover when it hits the occasional error. Is TypeScript transpilation not taking place? First steps: work out how to reproduce!
