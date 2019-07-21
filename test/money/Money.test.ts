@@ -1,6 +1,7 @@
 import Money from '../../src/money/Money'
 import Bank from '../../src/money/Bank'
 import Sum from '../../src/money/Sum'
+import Expression from '../../src/money/Expression'
 
 describe('The Money class', (): void => {
   test('it can multiply a currency', (): void => {
@@ -54,5 +55,34 @@ describe('The Money class', (): void => {
     bank.addRate({ from: 'CHF', to: 'USD' }, 2)
     const result = bank.reduce(Money.franc(2), 'USD')
     expect(result).toEqual(Money.dollar(1))
+  })
+
+  it('can add two different currencies', (): void => {
+    const fiveDollars = Money.dollar(5)
+    const tenFrancs = Money.franc(10)
+    const bank = new Bank()
+    bank.addRate({ from: 'CHF', to: 'USD' }, 2)
+    const result = bank.reduce(fiveDollars.plus(tenFrancs), 'USD')
+    expect(result).toEqual(Money.dollar(10))
+  })
+
+  it('returns Money from Sum.plus', (): void => {
+    const fiveDollars = Money.dollar(5) as Expression
+    const tenFrancs = Money.franc(10) as Expression
+    const bank = new Bank()
+    bank.addRate({ from: 'CHF', to: 'USD' }, 2)
+    const sum = new Sum(fiveDollars, tenFrancs).plus(fiveDollars)
+    const result = bank.reduce(sum, 'USD') as Money
+    expect(result).toEqual(Money.dollar(15))
+  })
+
+  it('returns Money from Sum.times', (): void => {
+    const fiveDollars = Money.dollar(5) as Expression
+    const tenFrancs = Money.franc(10) as Expression
+    const bank = new Bank()
+    bank.addRate({ from: 'CHF', to: 'USD' }, 2)
+    const sum = new Sum(fiveDollars, tenFrancs).times(2)
+    const result = bank.reduce(sum, 'USD') as Money
+    expect(result).toEqual(Money.dollar(20))
   })
 })
